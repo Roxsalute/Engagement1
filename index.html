@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>老郦家家庭事务中心</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span>郦</span>老郦家</a>
+    <nav>
+      <a href="#family">组织</a>
+      <a href="#schedule">日程</a>
+      <a href="#rules">家规</a>
+      <a href="#album">相册</a>
+      <a href="#messages">留言</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Family Operations</p>
+        <h1>老郦家家庭事务中心</h1>
+        <p>把家庭组织、日程安排、家规家训、相册和留言集中在一个清爽的页面里，让每件家事都有归属。</p>
+        <div class="actions">
+          <a class="btn primary" href="#schedule">新增日程</a>
+          <a class="btn secondary" href="#messages">写留言</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <p>今日概览</p>
+        <h2 id="todayTitle">今日暂无新增日程</h2>
+        <div class="stats">
+          <span><b>7</b> 位成员</span>
+          <span><b id="eventCount">0</b> 项日程</span>
+          <span><b id="messageCount">0</b> 条留言</span>
+        </div>
+        <div id="todayList" class="today-list"></div>
+      </aside>
+    </section>
+
+    <section class="quick shell">
+      <a href="#family"><b>01</b><strong>家庭组织架构</strong><small>长辈、核心成员、晚辈分层展示</small></a>
+      <a href="#schedule"><b>02</b><strong>日程安排</strong><small>新增、排序、删除、本地保存</small></a>
+      <a href="#rules"><b>03</b><strong>家规家训</strong><small>沉淀家庭共识和生活约定</small></a>
+      <a href="#album"><b>04</b><strong>相册留言</strong><small>保存照片，也留下想说的话</small></a>
+    </section>
+
+    <section id="family" class="section shell">
+      <div class="section-head">
+        <p class="eyebrow">Organization</p>
+        <h2>家庭组织架构</h2>
+        <p>示例内容可作为老郦家的家庭分工模板，后续可以替换姓名和职责。</p>
+      </div>
+      <div class="org">
+        <article>
+          <span class="tag">长辈层</span>
+          <h3>家庭顾问组</h3>
+          <div class="person"><i>郦</i><div><b>郦爷爷</b><small>家族故事与传统记录</small></div></div>
+          <div class="person"><i>家</i><div><b>郦奶奶</b><small>节日安排与家宴建议</small></div></div>
+        </article>
+        <article>
+          <span class="tag">核心层</span>
+          <h3>日常事务组</h3>
+          <div class="person"><i>明</i><div><b>郦明</b><small>财务账目与维修沟通</small></div></div>
+          <div class="person"><i>安</i><div><b>郦安</b><small>采购清单与健康提醒</small></div></div>
+          <div class="person"><i>晴</i><div><b>郦晴</b><small>照片归档与活动报名</small></div></div>
+        </article>
+        <article>
+          <span class="tag">晚辈层</span>
+          <h3>成长参与组</h3>
+          <div class="person"><i>小</i><div><b>小郦</b><small>学习计划与运动打卡</small></div></div>
+          <div class="person"><i>乐</i><div><b>郦乐</b><small>阅读记录与家庭值日</small></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="schedule" class="section shell">
+      <div class="section-head">
+        <p class="eyebrow">Calendar</p>
+        <h2>日程安排</h2>
+        <p>新增日程会保存在当前浏览器，并按日期时间自动排序。</p>
+      </div>
+      <div class="split">
+        <form id="eventForm" class="panel">
+          <h3>新增日程</h3>
+          <label>标题<input id="eventTitle" required maxlength="36" placeholder="例如：周末家庭聚餐"></label>
+          <div class="row">
+            <label>日期<input id="eventDate" type="date" required></label>
+            <label>时间<input id="eventTime" type="time"></label>
+          </div>
+          <div class="row">
+            <label>负责人<input id="eventOwner" maxlength="18" placeholder="例如：郦安"></label>
+            <label>分类<select id="eventCategory"><option>家事</option><option>聚会</option><option>健康</option><option>纪念日</option><option>学习</option></select></label>
+          </div>
+          <label>备注<textarea id="eventNote" maxlength="120" rows="3" placeholder="地点、准备事项或提醒"></textarea></label>
+          <button class="btn primary full">添加到日程</button>
+        </form>
+        <div class="panel">
+          <div class="panel-title"><h3>全部日程</h3><button id="clearEvents" class="text-btn">清空新增</button></div>
+          <div id="eventList" class="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" class="section shell">
+      <div class="section-head">
+        <p class="eyebrow">House Rules</p>
+        <h2>家规家训</h2>
+        <p>把常见家庭约定写清楚，让沟通更轻松。</p>
+      </div>
+      <div class="rules">
+        <article><span>生活公约</span><h3>彼此尊重，及时回应</h3><p>重要事项当天确认，公共区域用完归位。</p></article>
+        <article><span>财务约定</span><h3>大额支出先沟通</h3><p>家庭共同支出统一记录，超过约定金额先说明。</p></article>
+        <article><span>待客礼仪</span><h3>有客来访提前告知</h3><p>聚餐、留宿、临时拜访提前安排。</p></article>
+        <article><span>儿童规则</span><h3>作息稳定，任务可见</h3><p>学习、运动、阅读和家务都放进日程。</p></article>
+      </div>
+    </section>
+
+    <section id="album" class="section shell">
+      <div class="section-head">
+        <p class="eyebrow">Gallery</p>
+        <h2>家庭相册</h2>
+        <p>上传照片后会压缩保存到当前浏览器。</p>
+      </div>
+      <div class="toolbar">
+        <label class="upload">上传照片<input id="photoInput" type="file" accept="image/*" multiple></label>
+        <button id="clearPhotos" class="text-btn">清空上传</button>
+      </div>
+      <div id="albumGrid" class="album"></div>
+    </section>
+
+    <section id="messages" class="section shell">
+      <div class="section-head">
+        <p class="eyebrow">Message Board</p>
+        <h2>留言板</h2>
+        <p>最新留言会排在最前面，并保存在当前浏览器。</p>
+      </div>
+      <div class="split">
+        <form id="messageForm" class="panel">
+          <h3>写留言</h3>
+          <label>昵称<input id="messageName" required maxlength="16" placeholder="例如：郦晴"></label>
+          <label>留言<textarea id="messageText" required maxlength="180" rows="5" placeholder="写下想告诉家人的话"></textarea></label>
+          <button class="btn primary full">发布留言</button>
+        </form>
+        <div class="panel">
+          <div class="panel-title"><h3>最近留言</h3><button id="clearMessages" class="text-btn">清空新增</button></div>
+          <div id="messageList" class="list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <span>老郦家家庭事务中心</span>
+    <button id="resetAll" class="text-btn">恢复示例内容</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
